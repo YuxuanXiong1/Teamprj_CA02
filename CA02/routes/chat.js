@@ -1,16 +1,3 @@
-/*
-  gpt.js -- Router for the GPT
-  To run this you need to:
-* first visit openai.com and get an APIkey, 
-* which you export into the environment as shown in the shell code below.
-* next create a folder and put this file in the folder as gpt.py
-* finally run the following commands in that folder
-On Mac
-% pip3 install openai
-% export OPENAI_API_KEY="......."  # in bash
-% python3 gpt.py
-*/
-
 const express = require('express');
 const router = express.Router();
 const CHAT = require('../models/chat');
