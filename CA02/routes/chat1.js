@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CHAT = require('../models/chat');
+const CHAT = require('../models/chat1');
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
@@ -16,14 +16,12 @@ isLoggedIn = (req,res,next) => {
   }
 }
 
-// show all the queries
-router.get('/chat', isLoggedIn, async (req, res, next) => {
+router.get('/chat1', isLoggedIn, async (req, res, next) => {
     const chatItems = await CHAT.find({ userId: req.user._id });
-    res.render('chat', { user: req.user, chatItems });
+    res.render('chat1', { user: req.user, chatItems });
 });
 
-// ask a query
-router.post("/chat", async (req, res) => {
+router.post("/chat1", async (req, res) => {
     try {
         const prefix = "Translate the following into Chinese:";
         let prompt = prefix + req.body.code;
@@ -42,7 +40,7 @@ router.post("/chat", async (req, res) => {
             userId: req.user._id
         });
         await chatItem.save();
-        return res.render("chatResponse", { answer: response.data.choices[0].text });
+        return res.render("chatResponse1", { answer: response.data.choices[0].text });
     } catch (error) {
         return res.status(400).json({
             success: false,

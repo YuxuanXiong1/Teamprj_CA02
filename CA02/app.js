@@ -8,6 +8,7 @@ const pw_auth_router = require('./routes/pwauth')
 const toDoRouter = require('./routes/todo');
 const weatherRouter = require('./routes/weather');
 const chatRouter = require('./routes/chat');
+const chatRouter1 = require('./routes/chat1');
 
 const User = require('./models/User');
 
@@ -110,6 +111,7 @@ app.get('/about',
 app.use(toDoRouter);
 app.use(weatherRouter);
 app.use(chatRouter);
+app.use(chatRouter1);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
