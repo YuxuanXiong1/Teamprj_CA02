@@ -16,16 +16,14 @@ isLoggedIn = (req,res,next) => {
   }
 }
 
-// show all the queries
 router.get('/chat', isLoggedIn, async (req, res, next) => {
     const chatItems = await CHAT.find({ userId: req.user._id });
     res.render('chat', { user: req.user, chatItems });
 });
 
-// ask a query
 router.post("/chat", async (req, res) => {
     try {
-        const prefix = "Translate the following into Chinese:";
+        const prefix = "Can you give me somre advise of doing this thing: ";
         let prompt = prefix + req.body.code;
         console.log('prompt=', prompt);
         const response = await openai.createCompletion({
