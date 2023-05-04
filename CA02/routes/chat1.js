@@ -23,7 +23,7 @@ router.get('/chat1', isLoggedIn, async (req, res, next) => {
 
 router.post("/chat1", async (req, res) => {
     try {
-        const prefix = "Translate the following into Chinese:";
+        const prefix = "Show the auspicious and inauspicious activities according to the Chinese Huangli calendar for the following date:";
         let prompt = prefix + req.body.code;
         console.log('prompt=', prompt);
         const response = await openai.createCompletion({
